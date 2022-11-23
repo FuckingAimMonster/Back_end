@@ -21,7 +21,7 @@ class SigninSerializer(serializers.ModelSerializer):
             'password',
         )
 
-class SigninSerializer(serializers.ModelSerializer):
+class CheckIdSerializer(serializers.ModelSerializer):
     class Meta:
         model = CheckId
         fields = (
