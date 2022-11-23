@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, SignIn
+from .models import User, SignIn, CheckId
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -19,4 +19,11 @@ class SigninSerializer(serializers.ModelSerializer):
         fields = (
             'username',
             'password',
+        )
+
+class SigninSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CheckId
+        fields = (
+            'username',
         )

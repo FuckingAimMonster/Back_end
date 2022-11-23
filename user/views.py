@@ -36,4 +36,15 @@ class Signin(APIView):
             else:
                 return HttpResponse(status=400)
         return HttpResponse(status=400)
-    #cookies setting
+
+class Checkid(APIView):
+    def post(self, request):
+        serializer = SigninSerializer(data = request.data)
+        if serializer.is_valid():
+            username = serializer.data['username']
+            if User.objects.filter(username = username).exists():
+                duplicate = "fail"
+            else:
+                duplicate = "pass"
+            context = {'duplicate' : duplicate}
+        return HttpResponse(context, status=400)

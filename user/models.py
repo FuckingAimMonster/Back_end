@@ -12,3 +12,6 @@ class User(AbstractUser):
 class SignIn(models.Model):
     username = models.CharField(max_length=20, unique=True, verbose_name='아이디')
     password = models.CharField(max_length=30, verbose_name='비밀번호')
+
+class CheckId(models.Model):
+    username = models.CharField(max_length=20, unique=True, verbose_name='아이디')
