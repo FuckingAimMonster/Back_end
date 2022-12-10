@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http import HttpResponse
 from django.core import serializers
-from .serializers import UserSerializer, SigninSerializer, CheckIdSerializer, ModifyDpiSerializer
+from .serializers import UserSerializer, SigninSerializer, CheckIdSerializer
 from .models import User
 
 class Signup(APIView):
@@ -45,9 +45,11 @@ class Checkid(APIView):
 
 class ModifyDpi(APIView): 
     def post(self, request):
+        print(request)
         username = request.data['username']
         if User.objects.filter(username = username).exists():
             user = User.objects.get(username = username)
+            user.nickname = request.data['nickname']
             user.gamedpi = request.data['currentdpi']
             user.currentdpi = request.data['currentdpi']
             user.save()
